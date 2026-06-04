@@ -223,9 +223,10 @@ export const getServerSideProps: GetServerSideProps<GamePageProps> = async (
       },
     };
   } catch (e: any) {
+    const error = JSON.parse(JSON.stringify(e));
     return {
       props: {
-        error: e,
+        error,
       },
     };
   }
