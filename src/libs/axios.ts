@@ -39,8 +39,10 @@ customAxios.interceptors.response.use(
     }
     switch (e.response.status) {
       case 404: // Not Found
-        window.location.href = '/404';
-        break;
+        if (typeof window !== 'undefined') {
+          window.location.href = '/404';
+        }
+        throw e.response.data;
       default:
         throw e.response.data;
     }

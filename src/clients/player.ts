@@ -1,9 +1,8 @@
-import axios from 'axios';
+import customAxios from '@/libs/axios';
+import type { FindPlayersResponse } from '@/schema/response';
 
-import { API_HOST } from '@/constants';
-
-// プレイヤー取得
-export const findPlayers = async () => {
-  const response = await axios.get(`${API_HOST}/api/players`);
+// B-001
+export const findPlayers = async (): Promise<FindPlayersResponse> => {
+  const response = await customAxios.get('/players');
   return response.data;
 };
