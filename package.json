@@ -2,6 +2,9 @@
   "name": "poker-procon",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=18.17.0"
+  },
   "author": "Benesse i-Career Co., Ltd.",
   "license": "(c) Benesse i-Career Co., Ltd. All Rights Reserved.",
   "scripts": {
