@@ -113,10 +113,11 @@ export const getServerSideProps: GetServerSideProps<GameLogPageProps> = async (
       props: { id, data },
     };
   } catch (e: any) {
+    const error = JSON.parse(JSON.stringify(e));
     return {
       props: {
         id,
-        error: e,
+        error,
       },
     };
   }

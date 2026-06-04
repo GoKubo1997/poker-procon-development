@@ -324,10 +324,11 @@ export const getServerSideProps: GetServerSideProps<
       },
     };
   } catch (e: any) {
+    const error = JSON.parse(JSON.stringify(e));
     return {
       props: {
         id,
-        error: e,
+        error,
       },
     };
   }
