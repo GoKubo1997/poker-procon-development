@@ -4,25 +4,45 @@ import { Box, Flex } from '@chakra-ui/react';
 import type { CustomeError } from '@/schema/common';
 
 export interface ErrorMessageAreaProps {
-  errors: CustomeError[];
+  errors?: CustomeError[];
 }
 
-const ErrorMessageArea = ({ errors }: ErrorMessageAreaProps) => (
-  <Box
-    p={5}
-    bgColor="red.100"
-    borderWidth={2}
-    borderColor="red.600"
-    borderRadius="base"
-    color="red.600"
-  >
-    {errors.map((error) => (
-      <Flex key={error.code} align="center" gap={1}>
-        <WarningTwoIcon color="red.600" />
-        {`${error.message} (${error.code} - ${error.timestamp})`}
-      </Flex>
-    ))}
-  </Box>
-);
+const ErrorMessageArea = ({ errors }: ErrorMessageAreaProps) => {
+  if (!errors || errors.length === 0) {
+    return (
+      <Box
+        p={5}
+        bgColor="red.100"
+        borderWidth={2}
+        borderColor="red.600"
+        borderRadius="base"
+        color="red.600"
+      >
+        <Flex align="center" gap={1}>
+          <WarningTwoIcon color="red.600" />
+          エラーが発生しました
+        </Flex>
+      </Box>
+    );
+  }
+
+  return (
+    <Box
+      p={5}
+      bgColor="red.100"
+      borderWidth={2}
+      borderColor="red.600"
+      borderRadius="base"
+      color="red.600"
+    >
+      {errors.map((error) => (
+        <Flex key={error.code} align="center" gap={1}>
+          <WarningTwoIcon color="red.600" />
+          {`${error.message} (${error.code} - ${error.timestamp})`}
+        </Flex>
+      ))}
+    </Box>
+  );
+};
 
 export default ErrorMessageArea;
