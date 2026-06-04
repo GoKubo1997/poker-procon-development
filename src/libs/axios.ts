@@ -15,7 +15,16 @@ customAxios.interceptors.response.use(
     if (!e.response) {
       // ネットワークエラーやCORSエラーなど、レスポンスがない場合
       console.error('Network error:', e.message);
-      throw new Error(e.message || 'Network error');
+      throw {
+        status: 0,
+        errors: [
+          {
+            code: 'BZ001',
+            message: e.message || 'Network error',
+            timestamp: new Date().toISOString(),
+          },
+        ],
+      };
     }
     switch (e.response.status) {
       case 404: // Not Found
