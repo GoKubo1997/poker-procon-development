@@ -2,8 +2,19 @@ import axios from 'axios';
 
 import { API_HOST } from '@/constants';
 
+// サーバーサイド（getServerSideProps等）ではlocalhostを使用
+// クライアントサイドでは相対パスまたは環境変数を使用
+const getBaseURL = () => {
+  if (typeof window === 'undefined') {
+    // サーバーサイド
+    return 'http://localhost:3000/api';
+  }
+  // クライアントサイド
+  return `${API_HOST}/api`;
+};
+
 const customAxios = axios.create({
-  baseURL: `${API_HOST}/api`,
+  baseURL: getBaseURL(),
   headers: {
     'Content-Type': 'application/json',
   },
