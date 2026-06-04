@@ -12,6 +12,11 @@ const customAxios = axios.create({
 customAxios.interceptors.response.use(
   (response) => response,
   (e: any) => {
+    if (!e.response) {
+      // ネットワークエラーやCORSエラーなど、レスポンスがない場合
+      console.error('Network error:', e.message);
+      throw new Error(e.message || 'Network error');
+    }
     switch (e.response.status) {
       case 404: // Not Found
         window.location.href = '/404';

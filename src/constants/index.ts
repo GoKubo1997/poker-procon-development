@@ -2,7 +2,7 @@ import type { Suit } from '@/schema/card';
 
 export const SERVICE_NAME = 'Flush Code Hack';
 
-export const API_HOST = 'http://localhost:3000';
+export const API_HOST = process.env.NEXT_PUBLIC_API_HOST || '';
 
 export const SUITS: Suit[] = ['Spades', 'Hearts', 'Clubs', 'Diamonds'];
 
