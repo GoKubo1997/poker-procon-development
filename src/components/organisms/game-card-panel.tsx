@@ -34,17 +34,17 @@ const GameCardPanel = ({
       {
         label: '作成日時',
         data: (
-          <Text textStyle="normal.md">
-            {format(new Date(game.createdAt), 'yyyy-MM-dd hh:mm:ss')}
+          <Text textStyle="normal.md" suppressHydrationWarning>
+            {format(new Date(game.createdAt), 'yyyy-MM-dd HH:mm:ss')}
           </Text>
         ),
       },
       {
         label: '開始日時',
         data: (
-          <Text textStyle="normal.md">
+          <Text textStyle="normal.md" suppressHydrationWarning>
             {game.startedAt
-              ? format(new Date(game.startedAt), 'yyyy-MM-dd hh:mm:ss')
+              ? format(new Date(game.startedAt), 'yyyy-MM-dd HH:mm:ss')
               : ''}
           </Text>
         ),
